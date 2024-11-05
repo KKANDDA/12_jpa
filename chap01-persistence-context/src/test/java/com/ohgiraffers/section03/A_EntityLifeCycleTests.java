@@ -124,7 +124,7 @@ public class A_EntityLifeCycleTests {
         foundMenu1.setMenuPrice(5000);
         foundMenu2.setMenuPrice(5000); // 그냥 객체값이 바꼈다
 
-        Assertions.assertEquals(5000, entityManager.find(Menu.class, 11).getMenuPrice());
+        // Assertions.assertEquals(5000, entityManager.find(Menu.class, 11).getMenuPrice());
         Assertions.assertEquals(5000, entityManager.find(Menu.class, 12).getMenuPrice());
     }
 

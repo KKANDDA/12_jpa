@@ -36,7 +36,7 @@ public class A_EntityManagerLifeCycleTest {
         emf = Persistence.createEntityManagerFactory("jpatest");
     }
 
-    @BeforeEach
+    @BeforeEach // 모든 테스트가 실행된 후 호출됨
     public void initManager()
     {
         em = emf.createEntityManager();
@@ -47,7 +47,7 @@ public class A_EntityManagerLifeCycleTest {
         emf.close();
     }
 
-    @AfterEach
+    @AfterEach // 엔티티 매니저도 수행하고.
     public void closeEntityManager(){
         em.close();
     }
