@@ -1,7 +1,7 @@
 package com.ohgiraffers.chap05springdata.category.service;
 
 import com.ohgiraffers.chap05springdata.category.entity.Category;
-import com.ohgiraffers.chap05springdata.category.repository.CategoryResponsitory;
+import com.ohgiraffers.chap05springdata.category.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.Objects;
 @Service
 public class CategoryService {
     @Autowired
-    private CategoryResponsitory categoryResponsitory;
+    private CategoryRepository categoryResponsitory;
 
     public List<Category> selectAllCategory() {
 
@@ -73,6 +73,16 @@ public class CategoryService {
         }
         categoryResponsitory.delete(category); // 딜리트는 리턴값이 void이다. 불린이 아니다. 그래서 위에서 체크하고 return을 펄스로 때렸다.
         return true;
+
+    }
+
+    public Integer findByCategory(int code) {
+
+        Category category = categoryResponsitory.findByCategoryCode(code);
+        if(Objects.isNull(category)){
+            return null;
+        }
+        return category.getCategoryCode();
 
     }
 }
